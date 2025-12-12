@@ -1,0 +1,57 @@
+<!-- products/skincare.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skincare — Yoalu Beauty</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header>Yoalu Beauty ✨</header>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#skincare">Skincare</a>
+    <a href="../products/nails.html">Nails</a>
+    <a href="../products/hair.html">Hair</a>
+  </nav>
+
+  <div class="section container" id="skincare">
+    <h2>Skincare Favorites</h2>
+    <div class="grid">
+      <!-- PRODUCT CARD (example) - replace image path and link when ready -->
+      <div class="card">
+        <img src="../images/skincare/cosmin-ursea-nC9rUC7Oyfk-unsplash.jpg" alt="SKIN1004 Madagascar Centella Ampoule" />
+        <h3>SKIN1004 Madagascar Centella Ampoule</h3>
+        <p>Soothes acne-prone and sensitive skin. 1.85 fl.oz / 55ml</p>
+        <a class="buy-btn" href="https://amzn.to/3Mz8pvg" target="_blank" rel="nofollow noopener">Buy Now</a>
+      </div>
+
+      <!-- ADD MORE CARDS HERE: copy the block above and change image + link -->
+      <!-- Example placeholder card -->
+      <div class="card">
+        <img src="../images/skincare/placeholder-300.jpg" alt="Placeholder product" />
+        <h3>Product Title</h3>
+        <p>Short description (size / highlight).</p>
+        <a class="buy-btn" href="#" target="_blank" rel="nofollow noopener">Buy Now</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>© 2025 Yoalu Beauty — Amazon Affiliate Links Included</footer>
+
+  <script>
+    // fade-in on scroll (same behavior as index)
+    const sections = document.querySelectorAll('.section');
+    window.addEventListener('scroll', () => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+          section.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
