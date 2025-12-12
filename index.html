@@ -20,6 +20,12 @@
       font-weight: bold;
       color: #d84b8f;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: sparkle 2s infinite;
+    }
+    @keyframes sparkle {
+      0% {text-shadow: 0 0 2px #ff77b3;}
+      50% {text-shadow: 0 0 12px #ffd6e9;}
+      100% {text-shadow: 0 0 2px #ff77b3;}
     }
     nav {
       text-align: center;
@@ -40,9 +46,16 @@
       color: #ff77b3;
     }
     .section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
       padding: 50px 20px;
       max-width: 1000px;
       margin: auto;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h2 {
       color: #d84b8f;
@@ -64,10 +77,27 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(255,105,180,0.2);
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .card:hover::after {
+      opacity: 1;
     }
     .card img {
       width: 100%;
@@ -130,26 +160,6 @@
         <img src="https://via.placeholder.com/300x300.png?text=Poremizing+Ampoule" />
         <a class="btn" href="#">Poremizing Ampoule</a>
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x300.png?text=COSRX+Clear+Pad" />
-        <a class="btn" href="#">COSRX Clear Pad</a>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x300.png?text=Medicube+Zero+Pad" />
-        <a class="btn" href="#">Medicube Zero Pad 2.0</a>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x300.png?text=e.l.f+Thirst+Drops" />
-        <a class="btn" href="#">e.l.f Thirst Burst Drops</a>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x300.png?text=Tower+28+Spray" />
-        <a class="btn" href="#">Tower 28 SOS Spray</a>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x300.png?text=Peach+%26+Lily+Kit" />
-        <a class="btn" href="#">Peach & Lily Glass Kit</a>
-      </div>
     </div>
   </div>
 
@@ -182,5 +192,17 @@
   </div>
 
   <footer>© 2025 Yoalu Beauty — Amazon Affiliate Links Included</footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    window.addEventListener('scroll', () => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+          section.classList.add('visible');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
