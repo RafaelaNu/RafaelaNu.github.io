@@ -1,3 +1,4 @@
+// Animate sections on scroll
 const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', () => {
   sections.forEach(section => {
